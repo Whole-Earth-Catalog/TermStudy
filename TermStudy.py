@@ -80,6 +80,10 @@ term_counter = Counter(all_terms).most_common()
 print("Printing to file...")
 f = open('term_freq.csv', 'w')
 f.write('term,count,stop_word\n')
+f_stop = open('stop_word_freq.csv', 'w')
+f_stop.write('term,count\n')
+f_other = open('other_word_freq.csv', 'w')
+f_other.write('term,count\n')
 
 stop_word_dict = get_stop_word_dict()
 print(len(stop_word_dict['eng']))
@@ -111,6 +115,7 @@ for tup in term_counter:
     if is_stop_word(term, 'eng', stop_word_dict):
         stop_words.append(tup)
         f.write(term + "," + str(frequency) + ",yes\n")
+        f_stop.write(term + "," + str(frequency))
         sw_sum += frequency
         sw_count += 1
         if frequency < sw_min:
@@ -123,6 +128,7 @@ for tup in term_counter:
     else:
         other_words.append(tup)
         f.write(term + "," + str(frequency) + ",no\n")
+        f_other.write(term + "," + str(frequency))
         ow_sum += frequency
         ow_count += 1
         if frequency < ow_min:
