@@ -45,7 +45,7 @@ def get_top_100(lang, decade):
         these_terms = title.split()
         all_terms += these_terms
     term_counts = Counter(all_terms)
-    top_100 = term_counts.most_common(100)
+    top_100 = term_counts.most_common(500)
     return top_100
 
 # connect to webc database
