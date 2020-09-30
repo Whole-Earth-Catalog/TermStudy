@@ -115,7 +115,7 @@ for tup in term_counter:
     if is_stop_word(term, 'eng', stop_word_dict):
         stop_words.append(tup)
         f.write(term + "," + str(frequency) + ",yes\n")
-        f_stop.write(term + "," + str(frequency))
+        f_stop.write(term + "," + str(frequency) + "\n")
         sw_sum += frequency
         sw_count += 1
         if frequency < sw_min:
@@ -128,7 +128,7 @@ for tup in term_counter:
     else:
         other_words.append(tup)
         f.write(term + "," + str(frequency) + ",no\n")
-        f_other.write(term + "," + str(frequency))
+        f_other.write(term + "," + str(frequency) + "\n")
         ow_sum += frequency
         ow_count += 1
         if frequency < ow_min:
